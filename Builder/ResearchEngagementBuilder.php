@@ -1,6 +1,6 @@
 <?php
 namespace Builder;
-class ResearchAEngagementBuilder{
+class ResearchEngagementBuilder{
 
   public static function build($val) {
     $node = new \StdClass;
