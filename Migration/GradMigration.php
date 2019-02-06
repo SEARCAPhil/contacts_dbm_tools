@@ -28,6 +28,12 @@ function migrateGradResearch () {
 
 
   foreach($ms_built_data as $key => $val) {
+    # IMPORTANT
+    # Original value of saaftype came from saaftype table. However, the new system merged saaflass and saaftype respectively.
+    # In result, saaftype_id will not start with a type_id = 1, it will rather be the next of the last value of uploaded saafclass.
+    # For an instance, if 4 records from saafclass table were uploaded, the ssaftype_id will become 5 instead of 1 
+    # Saaaf type must be added by 4 because saafclass data count is known and will not change.
+    $val->saaftype_id = $val->saaftype_id + 4;
     $isImported = $masters_new->write($val->contactId, $val->saaftype_id, $val->dateStarted, $val->dateEnded, $val->title, $val->fieldStudy, $val->funding, $val->remarks, $val->hostUniversity, $val->isSearcaTraining);
     if($isImported) $total_new_count++;
   }
