@@ -9,7 +9,7 @@ class ResearchAssocBuilder{
     $node->dateStarted = $val->yearStart;
     $node->dateEnded = $val->yearComplete;
     $node->title = $val->researchTitle;
-    $node->isSearcaTraining = 1;
+    $node->isSearcaTraining = $node->isSearcaTraining ? 1 : 0;
     return $node;
   }
 

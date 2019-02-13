@@ -7,8 +7,9 @@ class Research{
 
 
   public function write($contact_id, $saaftype_id, $dateStarted, $dateEnded, $title, $fieldStudy, $funding, $remarks, $hostUniversity, $isSearcaTraining) {
-    $this->sth = $this->DB->prepare('INSERT INTO research(contact_id, dateStarted, dateEnded, title, fieldStudy, funding, remarks, hostUniversity, isSearcaTraining) values (:contact_id, :dateStarted, :dateEnded, :title, :fieldStudy, :funding, :remarks, :hostUniversity, :isSearcaTraining)');
+    $this->sth = $this->DB->prepare('INSERT INTO research(contact_id, saaftype_id, dateStarted, dateEnded, title, fieldStudy, funding, remarks, hostUniversity, isSearcaTraining) values (:contact_id, :saaftype_id, :dateStarted, :dateEnded, :title, :fieldStudy, :funding, :remarks, :hostUniversity, :isSearcaTraining)');
     $this->sth->bindValue(':contact_id',$contact_id); 
+    $this->sth->bindValue(':saaftype_id',$saaftype_id); 
     $this->sth->bindValue(':dateStarted', $dateStarted);
     $this->sth->bindValue(':dateEnded', $dateEnded);
     $this->sth->bindValue(':title', $title);

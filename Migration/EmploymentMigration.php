@@ -19,9 +19,9 @@ function migrateEmployments () {
   $total_employment_contact_count = 0;
   $employment_built_data = [];
 
-
+  # DO NOT include those who does not have any work experience
   foreach($contacts_data as $key => $val) {
-    $employment_built_data[] = EmploymentBuilder::build($val);
+    if(!is_null($val->company)) $employment_built_data[] = EmploymentBuilder::build($val);
   }
 
   foreach($employment_built_data as $key_emp => $val_emp) {
@@ -33,7 +33,7 @@ function migrateEmployments () {
   echo "**IMPORTING EMPLOYMENT** \n\r";
   echo "TOTAL(orig/new):".$total_orig_contact_count."/".$total_employment_contact_count."\n";
   if($total_orig_contact_count !== $total_employment_contact_count) {
-    echo "\nFinished with ERRORS!\n";
+    echo "\nSOME OF Contacts doesnt have any  work related record!\n";
   }
   echo "-----------------------------------------\n\r";
 }
