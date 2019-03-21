@@ -20,6 +20,7 @@ include_once('Migration/SectorMigration.php');
 include_once('Migration/AfftypeMigration.php');
 include_once('Migration/SaafClassMigration.php');
 include_once('Migration/SaafTypeMigration.php');
+include_once('CSVImporter/Migration.php');
 
 
 # General
@@ -44,3 +45,6 @@ migrateAssocResearch();
 migrateGradResearch();
 migrateTrainings();
 migrateEngagementResearch();
+
+#CSV
+migrateResourcePerson();

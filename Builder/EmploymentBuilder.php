@@ -13,6 +13,8 @@ class EmploymentBuilder{
     $node->fax = $val->officeFax;
     $node->areaCode = $val->officeAreaCode;
     $node->sector = $val->sector; 
+    $node->supervisor = $val->supervisor;
+    $node->supervisorDesignation = $val->supervisorDesignation;
     
     return $node;
   }

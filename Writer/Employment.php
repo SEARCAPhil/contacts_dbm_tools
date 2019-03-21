@@ -6,8 +6,8 @@ class Employment{
   }
 
 
-  public function write($contact_id, $companyName, $companyAddress, $position, $employedFrom, $employedTo, $country, $countryCode, $zip, $fax, $areaCode, $sector) {
-    $this->sth = $this->DB->prepare('INSERT INTO employment(contact_id, companyName, companyAddress, position, employedFrom, employedTo, country, countryCode, zip, fax, areaCode, sector) values(:contact_id, :companyName, :companyAddress, :position, :employedFrom, :employedTo, :country, :countryCode, :zip, :fax, :areaCode, :sector)');
+  public function write($contact_id, $companyName, $companyAddress, $position, $employedFrom, $employedTo, $country, $countryCode, $zip, $fax, $areaCode, $sector, $supervisor = null, $supervisorDesignation = null) {
+    $this->sth = $this->DB->prepare('INSERT INTO employment(contact_id, companyName, companyAddress, position, employedFrom, employedTo, country, countryCode, zip, fax, areaCode, sector, supervisor, supervisorDesignation) values(:contact_id, :companyName, :companyAddress, :position, :employedFrom, :employedTo, :country, :countryCode, :zip, :fax, :areaCode, :sector, :supervisor, :supervisorDesignation)');
     $this->sth->bindValue(':contact_id',$contact_id); 
     $this->sth->bindValue(':companyName', $companyName); 
     $this->sth->bindValue(':companyAddress', $companyAddress); 
@@ -20,6 +20,8 @@ class Employment{
     $this->sth->bindValue(':fax', $fax);
     $this->sth->bindValue(':areaCode', $areaCode);
     $this->sth->bindValue(':sector', $sector);
+    $this->sth->bindValue(':supervisor', $supervisor);
+    $this->sth->bindValue(':supervisorDesignation', $supervisorDesignation);
     $this->sth->execute();
     return $this->DB->lastInsertId();
   }

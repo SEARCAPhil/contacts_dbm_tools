@@ -10,7 +10,7 @@ class Contacts {
   }
 
   public function retrieve () {
-    $this->sth = $this->DB->prepare('SELECT * FROM contact ORDER BY contact_id ASC');
+    $this->sth = $this->DB->prepare('SELECT contact.*, trainaff.trainaff_id FROM contact LEFT JOIN trainaff on trainaff.contact_id = contact.contact_id WHERE trainaff.trainaff_id IS NULL ORDER BY contact_id ASC');
     $this->sth->execute();
     $result = [];
     while($row = $this->sth->fetch(\PDO::FETCH_OBJ)) {

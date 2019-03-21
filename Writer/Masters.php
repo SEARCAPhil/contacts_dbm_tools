@@ -7,6 +7,7 @@ class Masters{
 
 
   public function write($contact_id, $institution, $country, $field, $grad, $scholarship, $type) {
+    $this->DB->setAttribute( \PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION );
     $this->sth = $this->DB->prepare('INSERT INTO education(contact_id, institution, country, field, grad, scholarship, type) values (:contact_id, :institution, :country, :field, :grad, :scholarship, :type)');
     $this->sth->bindValue(':contact_id',$contact_id); 
     $this->sth->bindValue(':institution', $institution);
