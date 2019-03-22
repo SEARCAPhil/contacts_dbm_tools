@@ -165,7 +165,12 @@ class Trainees {
 
                  # TRAINING
                  if(!empty($csv['course_attended']) && $id) {
-                  $train = self::writeTraining($id , $csv['course_attended'], null, null, $csv['date_started'], $csv['date_ended'], null, $csv['venue'], $csv['sponsor'], null, null, null, $csv['organizing_agency'], null, 1);
+                  # IMPORTANT
+                  # THIS CONTAINS HARD-CODED VALUE
+                  # Since the data has no saaftype included, we will use the
+                  # hard coded value for training alumni which is 2.
+                  $saaftype_id = 2;
+                  $train = self::writeTraining($id , $csv['course_attended'], $saaftype_id, null, $csv['date_started'], $csv['date_ended'], null, $csv['venue'], $csv['sponsor'], null, null, null, $csv['organizing_agency'], null, 1);
                 }
               } 
             }
@@ -176,9 +181,10 @@ class Trainees {
         
           
         fclose($handle);
-        // show status
-        self::showMessage();
     }
+    
+    // show status
+    self::showMessage();
   }
 
   public function write($fullname, $gender, $birthdate, $nationality, $specialization, $homeAddress, $homeCountry, $homeZipCode, $homeCountryCode, $homeAreaCode, $civilStat, $others) {
@@ -207,7 +213,3 @@ class Trainees {
 
   }
 }
-
-
-$a = new Trainees($DB_CON_NEW);
-$a->migrate();

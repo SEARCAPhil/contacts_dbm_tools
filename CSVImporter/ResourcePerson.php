@@ -75,7 +75,7 @@ class ResourcePerson {
                 # TRAINING
                 if(!empty($csv['course_attended'])) {
                   $training_records++;
-                  $train = self::writeTraining($writtenID , $csv['course_attended'], null, null, null, null, null, null, null, null, null, null, null, null, 0);
+                  $train = self::writeTraining($writtenID , $csv['course_attended'],  $saaftype_id , null, null, null, null, null, null, null, null, null, null, null, 0);
                   if($train > 0 && $train) $trained++;
                 }
                 

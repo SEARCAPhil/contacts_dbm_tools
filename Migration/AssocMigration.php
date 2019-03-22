@@ -23,7 +23,7 @@ function migrateAssocResearch () {
 
   foreach($masters_data as $key => $val) {
     # MUST NOT BE UNDER GRAD SCHOLARSHIP
-    $node->isSearcaTraining = 0;
+    $val->isSearcaTraining = 0;
     $ms_built_data[] = ResearchAssocBuilder::build($val);
   }
 

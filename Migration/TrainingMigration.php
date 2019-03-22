@@ -32,8 +32,10 @@ function migrateTrainings () {
     # In result, saaftype_id will not start with a type_id = 1, it will rather be the next of the last value of uploaded saafclass.
     # For an instance, if 4 records from saafclass table were uploaded, the ssaftype_id will become 5 instead of 1 
     # Saaaf type must be added by 4 because saafclass data count is known and will not change.
+
+ 
     $val->saaftype_id = $val->saaftype_id + 4;
-    $isImported = $masters_new->write($val->contactId, $val->title, $val->saaftype_id, $val->notes, $val->dateStarted, $val->dateEnded, $val->scholarship, $val->venue, $val->sponsor, $val->supervisor, $val->supervisorDesignation, $val->trainingType, $val->organizingAgency, $val->hostUniversity, $val->isSearcaTraining);
+    $isImported = $masters_new->write($val->contactId, $val->title, $val->saaftype_id, $val->notes, $val->dateStarted, $val->dateEnded, $val->scholarship, $val->venue, $val->sponsor, $val->trainingType, $val->organizingAgency, $val->hostUniversity);
     if($isImported) $total_new_count++;
   }
 

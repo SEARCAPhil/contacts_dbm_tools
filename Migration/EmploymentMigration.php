@@ -25,7 +25,7 @@ function migrateEmployments () {
   }
 
   foreach($employment_built_data as $key_emp => $val_emp) {
-    $isImportedEmployment = $employment_new->write($val_emp->contactId, $val_emp->companyName, $val_emp->companyAddress, $val_emp->position, null, null, null, $val->countryCode, $val->zip, $val->fax, $val->areaCode, $val->sector);
+    $isImportedEmployment = (!empty($val_emp->companyName)) ? $employment_new->write($val_emp->contactId, $val_emp->companyName, $val_emp->companyAddress, $val_emp->position, null, null, null, $val->countryCode, $val->zip, $val->fax, $val->areaCode, $val->sector, $val->supervisor, $val->supervisorDesignation) : 0;
     if($isImportedEmployment) $total_employment_contact_count++;
   }
 

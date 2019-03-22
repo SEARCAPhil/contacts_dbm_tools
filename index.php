@@ -48,3 +48,4 @@ migrateEngagementResearch();
 
 #CSV
 migrateResourcePerson();
+migrateTrainees();
